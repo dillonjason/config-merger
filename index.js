@@ -7,7 +7,6 @@ var fs = require('fs'),
     yargs = require('yargs').argv,
     readR = require('./lib/read-recursive');
 
-var outputFile = 'config.json'
 var NAME = 0;
 var ENV = 2;
 
@@ -19,7 +18,7 @@ function Configify(options) {
     this.options = Object.assign({
         environment: ''
     }, options);
-    this.baseDir = path.join(__dirname, this.settings().srcFolder);
+    this.baseDir = path.join(process.cwd(), this.settings().srcFolder);
     this.outputFile = this.settings().output;
     this.provider = new nconf.Provider().use('file', {file: path.join(this.baseDir, this.outputFile)});
     this.provider.load();
@@ -41,7 +40,7 @@ Configify.prototype.getProp = function (filename, type) {
 Configify.prototype.getConfigs = function (files, environment) {
     var self = this;
     return files.filter(function (file) {
-        return ((file !== outputFile) && (self.getProp(file, ENV) === self.options.environment))
+        return ((file !== self.outputFile) && (self.getProp(file, ENV) === self.options.environment))
     });
 };
 
@@ -53,13 +52,13 @@ Configify.prototype.settings = function () {
 Configify.prototype.loadConfigs = function(files){
     var self = this;
     self.getConfigs(files, '').forEach(function (file) {
-        console.log(path.join(__dirname, self.baseDir, file))
+        console.log(path.join(self.baseDir, file))
         console.log(self.getProp(file, NAME))
         self.provider.merge(self.getProp(file, NAME), JSON.parse(fs.readFileSync(path.join(self.baseDir, file), 'utf8')));
     })
 
     self.getConfigs(files, process.env.NODE_ENV).forEach(function (file) {
-        console.log(path.join(__dirname, self.baseDir, file))
+        console.log(path.join(self.baseDir, file))
         console.log(self.getProp(file, NAME))
         self.provider.merge(self.getProp(file, NAME), JSON.parse(fs.readFileSync(path.join(self.baseDir, file), 'utf8')));
     });
@@ -79,7 +78,6 @@ function run(){
             console.error("There was an error reading the file");
             return
         }
-
         var config = new Configify({
             environment: process.env.NODE_ENV,
             configName: yargs.config,
@@ -91,7 +89,7 @@ function run(){
     });
 }
 
-//this cont be required an used at the moment
+//this cant be required an used at the moment
 run();
 
 
