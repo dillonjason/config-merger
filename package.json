@@ -1,0 +1,31 @@
+{
+  "name": "nconf-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nconf": "^0.8.4",
+    "read-package-json": "^2.0.3",
+    "yargs": "^4.2.0"
+  },
+  "devDependencies": {},
+  "description": "",
+  "configify": [
+    {
+      "company1": {
+        "output": "app.config.json",
+        "srcFolder": "company1_configs"
+      }
+    },
+    {
+      "company2": {
+        "output": "app.config.json",
+        "srcFolder": "company2_configs"
+      }
+    }
+  ]
+}
