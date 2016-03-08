@@ -1,12 +1,21 @@
 {
-  "name": "nconf-test",
+  "name": "config-merger",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "David L Moody Jr <moody.david@gmail.com>",
+
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/dlmoody/config-merger.git"
+  },
+  "keywords": [
+    "configuration",
+    "plugabble"
+  ],
+  "license": "MIT",
   "dependencies": {
     "nconf": "^0.8.4",
     "read-package-json": "^2.0.3",
