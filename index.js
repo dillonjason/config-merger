@@ -81,7 +81,7 @@ function run(){
         var config = new Configify({
             environment: process.env.NODE_ENV,
             configName: yargs.config,
-            config: data.configify.find(function (item) {
+            config: data.configmerger.find(function (item) {
                 return !!item[yargs.config];
             })
         });

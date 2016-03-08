@@ -1,4 +1,4 @@
-## Configify
+## Config-Merger
 
 Allows for crazy config file setups. merges multiple files into one file.
 
@@ -31,3 +31,5 @@ Then you could set up a npm script with something like
 ```
  NODE_ENV=production  config-merger --config=company1
  ```
+
+And PROFIT!!!

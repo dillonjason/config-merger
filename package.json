@@ -25,7 +25,7 @@
   },
   "devDependencies": {},
   "description": "",
-  "configify": [
+  "configmerger": [
     {
       "company1": {
         "output": "app.config.json",
