@@ -1,6 +1,6 @@
 {
   "name": "config-merger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "bin": {
     "config-merger": "./index.js"
@@ -9,7 +9,6 @@
     "start": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "David L Moody Jr <moody.david@gmail.com>",
-
   "repository": {
     "type": "git",
     "url": "http://github.com/dlmoody/config-merger.git"
