@@ -2,6 +2,9 @@
   "name": "config-merger",
   "version": "1.0.0",
   "main": "index.js",
+  "bin": {
+    "config-merger": "./index.js"
+  },
   "scripts": {
     "start": "echo \"Error: no test specified\" && exit 1"
   },
