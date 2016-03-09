@@ -30,7 +30,7 @@ describe("configify object", function(){
     var reader = function(){
       return [];
     }
-    this.configMerger = new ConfigMerger(path, nconf, reader, {
+    this.configMerger = new ConfigMerger(fs, path, nconf, reader, {
       environment: 'production',
       configName: 'company1',
       config:{
