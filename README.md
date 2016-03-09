@@ -5,6 +5,11 @@ Allows for crazy config file setups. merges multiple files into one file.
 
 [![Build Status](https://travis-ci.org/dlmoody/config-merger.svg?branch=master)](https://travis-ci.org/dlmoody/config-merger)
 
+##Install
+
+```npm install config-merger```
+
+##Create a configuration in your package.json
 
 Create a section in your package.json config like this
 
@@ -26,10 +31,12 @@ Create a section in your package.json config like this
   ...
 ```
 
+##Command line API
+
 Then you could set up a npm script with something like
 
 ```
  NODE_ENV=production  config-merger --config=company1
  ```
 
-And PROFIT!!!
+Profit !!!
