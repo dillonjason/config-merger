@@ -1,17 +1,21 @@
 var assert = require('assert');
-
-
 var ConfigMerger = require('../lib/config-merger.js');
+var sinon = require('sinon');
 
 
 
 describe("configify object", function(){
-  beforeEach(function(){
-    var path = {
+  function myPathStub(){
+    return {
       join: function(){ return "/Users/davidmoody/Projects"; }
     }
-    var fs = {}
-    var nconf = {
+  }
+  function myFsStub() {
+    return {};
+  }
+
+  function mynconfStub() {
+    return {
       Provider: function(){
         var thing = {
           use: function() {
@@ -26,10 +30,18 @@ describe("configify object", function(){
         return thing;
       }
     }
-
+  }
+  function myReaderStub() {
     var reader = function(){
       return [];
     }
+  }
+  beforeEach(function(){
+    var fs = myFsStub();
+    var path = myPathStub();
+    var nconf = mynconfStub();
+    var reader = myReaderStub();
+
     this.configMerger = new ConfigMerger(fs, path, nconf, reader, {
       environment: 'production',
       configName: 'company1',

@@ -4,7 +4,9 @@ Allows for crazy config file setups. merges multiple files into one file.
 
 
 [![Build Status](https://travis-ci.org/dlmoody/config-merger.svg?branch=master)](https://travis-ci.org/dlmoody/config-merger)
-
+[![Code Climate](https://codeclimate.com/github/dlmoody/config-merger/badges/gpa.svg)](https://codeclimate.com/github/dlmoody/config-merger)
+[![Test Coverage](https://codeclimate.com/github/dlmoody/config-merger/badges/coverage.svg)](https://codeclimate.com/github/dlmoody/config-merger/coverage)
+[![Issue Count](https://codeclimate.com/github/dlmoody/config-merger/badges/issue_count.svg)](https://codeclimate.com/github/dlmoody/config-merger)
 ##Install
 
 ```npm install config-merger```
