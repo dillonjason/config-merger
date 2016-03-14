@@ -19,7 +19,7 @@ function run(){
             return
         }
         var config = new ConfigMerger(fs, path, nconf, readRecursive, {
-            environment: process.env.NODE_ENV,
+            environment: yargs.environment,
             configName: yargs.config,
             config: data.configmerger.find(function (item) {
                 return !!item[yargs.config];
