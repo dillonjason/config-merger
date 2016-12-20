@@ -1,6 +1,8 @@
-## Config-Merger
+## Config-Merger-V2
 
-Allows for crazy config file setups. merges multiple files into one file.
+Allows for merging of multiple json files into a single json file.
+
+This is a fork form the original config-merger by David Moody (https://github.com/dlmoody/config-merger)
 
 
 [![Build Status](https://travis-ci.org/dlmoody/config-merger.svg?branch=master)](https://travis-ci.org/dlmoody/config-merger)
@@ -9,7 +11,7 @@ Allows for crazy config file setups. merges multiple files into one file.
 [![Issue Count](https://codeclimate.com/github/dlmoody/config-merger/badges/issue_count.svg)](https://codeclimate.com/github/dlmoody/config-merger)
 ##Install
 
-```npm install config-merger```
+```npm install config-merger-v2```
 
 ##Create a configuration in your package.json
 

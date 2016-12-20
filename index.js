@@ -11,22 +11,22 @@ function run(){
             jsonConfig.environment = jsonConfig.environment.length > 0 ? jsonConfig.environment : yargs.environment;
             jsonConfig.output = jsonConfig.output.length > 0 ? jsonConfig.output : yargs.output;
 
-            var config = new ConfigMerger({
+            var configFromPackageJSON = new ConfigMerger({
                 source: jsonConfig.source,
                 environment: jsonConfig.environment,
                 output: jsonConfig.output
             });
 
-            attemptSave(config);
+            attemptSave(configFromPackageJSON);
         }
         else {
-            var config = new ConfigMerger({
+            var configFromParams = new ConfigMerger({
                 source: yargs.source,
                 environment: yargs.environment,
                 output: yargs.output
             });
 
-            attemptSave(config);
+            attemptSave(configFromParams);
         }
     });
 }
