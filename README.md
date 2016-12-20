@@ -22,12 +22,14 @@ This is a fork form the original config-merger by David Moody (https://github.co
 ## How do I do?
 
 In a source file you will need one or more "Base Config" file.  They should follow the naming convention:
+
 ```{YourLabel}.config.json```
 
 Config merger will grab all these files and merge them into a single base config, so you can break this up to help you
 organize things if you'd like or keep it as one massive file.
 
 Then for each of your environments you will need a file with the following naming convention:
+
 ```{YourLabel}.config.{environment}.json```
 
 Config merger will then merge all of your environment configs into a single environment config.  It will then merge
@@ -37,6 +39,7 @@ location.
 ### From Command Line
 
 Simply run the following:
+
 ```config-merger-v2 --source=path/to/your/source --environment=dev --output=app.config.json```
 
 ### From package.json
@@ -55,6 +58,7 @@ configmerger: {
 configName should be a unique name
 
 Then you will want to run the following command:
+
 ```config-merger-v2 --configName=HelloWorld_Dev```
 
 Profit !!!
