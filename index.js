@@ -1,35 +1,74 @@
 #!/usr/bin/env node
 
-var fs = require('fs'),
-    path = require('path'),
-    nconf = require('nconf'),
-    readJson = require('read-package-json'),
-    yargs = require('yargs').argv,
-    ConfigMerger = require('./lib/config-merger.js');
-
-var readRecursive = require('./lib/read-recursive');
-var NAME = 0;
-var ENV = 2;
-
+var ConfigMerger = require('./lib/config-merger.js');
+var readPackageJson = require('read-package-json');
 
 function run(){
-    readJson('package.json', console.error, false, function (err, data) {
-        if (err) {
-            console.error("There was an error reading the file");
-            return
+    readPackageJson('package.json', console.error, false, function (error, data) {
+        var missingParameter = [];
+        if (!yargs.source)
+            missingParameter.push('source');
+
+        if (!yargs.environment)
+            missingParameter.push('environment');
+
+        if (!yargs.output)
+            missingParameter.push('output');
+
+        if (error && missingParameter.length > 0) {
+            console.error('Unable to find package.json and missing parameter(s): ' + missingParameter.join(', '));
+            return;
         }
-        var config = new ConfigMerger(fs, path, nconf, readRecursive, {
-            environment: yargs.environment,
-            configName: yargs.config,
-            config: data.configmerger.find(function (item) {
-                return !!item[yargs.config];
-            })
-        });
-        config.save()
+        else {
+            if (yargs.configName && data.configMerger && data.configMerger[yargs.configName]) {
+                var config = data.configMerger[yargs.configName];
+                config.source = config.source.length > 0 ? config.source : yargs.source;
+                config.environment = config.environment.length > 0 ? config.environment : yargs.environment;
+                config.output = config.output.length > 0 ? config.output : yargs.output;
+
+                missingParameter = [];
+
+                if (!yargs.source)
+                    missingParameter.push('source');
+
+                if (!yargs.environment)
+                    missingParameter.push('environment');
+
+                if (!yargs.output)
+                    missingParameter.push('output');
+
+                if (missingParameter.length > 0) {
+                    console.error('Missing parameter(s): ' + missingParameter.join(', '));
+                    return;
+                }
+                else {
+                    var config = new ConfigMerger({
+                        source: config.source,
+                        environment: config.environment,
+                        output: config.output
+                    });
+
+                    config.save();
+                }
+            }
+            else if (missingParameter.length > 0) {
+                console.error('Missing parameter(s): ' + missingParameter.join(', '));
+                return;
+            }
+            else {
+                var config = new ConfigMerger({
+                    source: yargs.source,
+                    environment: yargs.environment,
+                    output: yargs.output
+                });
+
+                config.save();
+            }
+        }
     });
 }
 
-//this cant be required an used at the moment
+// This cant be required an used at the moment
 run();
 
 
