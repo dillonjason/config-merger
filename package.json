@@ -1,6 +1,6 @@
 {
-  "name": "config-merger",
-  "version": "1.0.10",
+  "name": "config-merger-v2",
+  "version": "2.0.0",
   "main": "index.js",
   "bin": {
     "config-merger": "./index.js"
@@ -10,10 +10,10 @@
     "npm:bump-build": "npm version build -m \"Bumped to build %s\"",
     "npm:bump-patch": "npm version patch -m \"Bumped to patch %s\""
   },
-  "author": "David L Moody Jr <moody.david@gmail.com>",
+  "author": "Dillon Jason <djasuar@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "http://github.com/dlmoody/config-merger.git"
+    "url": "https://github.com/dillonjason/config-merger-v2.git"
   },
   "keywords": [
     "configuration",
@@ -23,11 +23,11 @@
   "dependencies": {
     "nconf": "^0.8.4",
     "read-package-json": "^2.0.3",
-    "yargs": "^4.2.0"
+    "yargs": "^6.5.0"
   },
   "devDependencies": {
-    "mocha": "^2.4.5",
-    "sinon": "^1.17.3"
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.6"
   },
   "description": "",
   "configmerger": [
