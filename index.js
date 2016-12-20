@@ -1,35 +1,50 @@
 #!/usr/bin/env node
 
-var fs = require('fs'),
-    path = require('path'),
-    nconf = require('nconf'),
-    readJson = require('read-package-json'),
-    yargs = require('yargs').argv,
-    ConfigMerger = require('./lib/config-merger.js');
-
-var readRecursive = require('./lib/read-recursive');
-var NAME = 0;
-var ENV = 2;
-
+var ConfigMerger = require('./lib/config-merger.js');
+var readPackageJson = require('read-package-json');
 
 function run(){
-    readJson('package.json', console.error, false, function (err, data) {
-        if (err) {
-            console.error("There was an error reading the file");
-            return
+    readPackageJson('package.json', console.error, false, function (error, data) {
+        if (!error && yargs.configName && data.configMerger && data.configMerger[yargs.configName]) {
+            var jsonConfig = data.configMerger[yargs.configName];
+            jsonConfig.source = jsonConfig.source.length > 0 ? jsonConfig.source : yargs.source;
+            jsonConfig.environment = jsonConfig.environment.length > 0 ? jsonConfig.environment : yargs.environment;
+            jsonConfig.output = jsonConfig.output.length > 0 ? jsonConfig.output : yargs.output;
+
+            var config = new ConfigMerger({
+                source: jsonConfig.source,
+                environment: jsonConfig.environment,
+                output: jsonConfig.output
+            });
+
+            attemptSave(config);
         }
-        var config = new ConfigMerger(fs, path, nconf, readRecursive, {
-            environment: process.env.NODE_ENV,
-            configName: yargs.config,
-            config: data.configmerger.find(function (item) {
-                return !!item[yargs.config];
-            })
-        });
-        config.save()
+        else {
+            var config = new ConfigMerger({
+                source: yargs.source,
+                environment: yargs.environment,
+                output: yargs.output
+            });
+
+            attemptSave(config);
+        }
     });
 }
 
-//this cant be required an used at the moment
+function attemptSave(config) {
+    if (config.hasError)
+        console.error(config.errorMessage);
+    else {
+        config.save();
+
+        if (config.hasError) {
+            console.error(config.errorMessage);
+        }
+    }
+
+}
+
+// This cant be required an used at the moment
 run();
 
 
