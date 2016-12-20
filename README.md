@@ -5,10 +5,10 @@ Allows for merging of multiple json files into a single json file.
 This is a fork form the original config-merger by David Moody (https://github.com/dlmoody/config-merger)
 
 
-[![Build Status](https://travis-ci.org/dlmoody/config-merger.svg?branch=master)](https://travis-ci.org/dlmoody/config-merger)
-[![Code Climate](https://codeclimate.com/github/dlmoody/config-merger/badges/gpa.svg)](https://codeclimate.com/github/dlmoody/config-merger)
-[![Test Coverage](https://codeclimate.com/github/dlmoody/config-merger/badges/coverage.svg)](https://codeclimate.com/github/dlmoody/config-merger/coverage)
-[![Issue Count](https://codeclimate.com/github/dlmoody/config-merger/badges/issue_count.svg)](https://codeclimate.com/github/dlmoody/config-merger)
+[![Build Status](https://travis-ci.org/dillonjason/config-merger-v2.svg?branch=master)](https://travis-ci.org/dillonjason/config-merger-v2)
+[![Code Climate](https://codeclimate.com/github/dillonjason/config-merger-v2/badges/gpa.svg)](https://codeclimate.com/github/dillonjason/config-merger-v2)
+[![Test Coverage](https://codeclimate.com/github/dillonjason/config-merger-v2/badges/coverage.svg)](https://codeclimate.com/github/dillonjason/config-merger-v2)
+[![Issue Count](https://codeclimate.com/github/dillonjason/config-merger-v2/badges/issue_count.svg)](https://codeclimate.com/github/dillonjason/config-merger-v2)
 ##Install
 
 ```npm install config-merger-v2```
