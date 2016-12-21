@@ -55,10 +55,10 @@ configmerger: {
 }
 ```
 
-configName should be a unique name
+config should be a unique name
 
 Then you will want to run the following command:
 
-```config-merger-v2 --configName=HelloWorld_Dev```
+```config-merger-v2 --config=HelloWorld_Dev```
 
 Profit !!!
